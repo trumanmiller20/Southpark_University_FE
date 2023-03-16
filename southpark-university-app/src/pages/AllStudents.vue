@@ -16,4 +16,10 @@ import StudentCard from '../components/StudentCard'
   }
 </script>
 
-<style></style>
+<style>
+.allstudents {
+  display: flex;
+  flex-wrap: row wrap;
+  margin: 25px;
+}
+</style>
