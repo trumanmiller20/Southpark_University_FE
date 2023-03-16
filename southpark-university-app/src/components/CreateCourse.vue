@@ -1,5 +1,12 @@
 <template>
-  <div></div>
+  <div class="form-fields">
+    <form>
+      <label>
+      Course Name
+      </label>
+      <input class="course-name" name="course-name" placeholder="Accounting II" required />
+    </form>
+  </div>
 </template>
 
 <script>
