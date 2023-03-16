@@ -11,17 +11,16 @@
             <label htmlFor="email">
               Email
             </label>
-            <input class="email-field" name="email" type="email" placeholder="example@gmail.com" required />
+            <input class="email-field" name="email" type="email" placeholder="example@gmail.com" required v-model="email" />
             <label htmlFor="password">
               Password
             </label>
-            <input class="password-field" name="password" type="password" required />
+            <input class="password-field" name="password" type="password" required v-model="password" />
           </form>
         </div>
       </section>
-      <h2> Don't have an account?
-      </h2>
-        <button class="button">Create Account</button>
+      <h2>Don't have an account?</h2>
+      <button class="button" @click="account = !account">Create Account</button>
     </div>
   </div>
 
@@ -37,15 +36,15 @@
             <label htmlFor="email">
               Email
             </label>
-            <input class="email-field" name="email" type="email" placeholder="example@gmail.com" required />
+            <input class="email-field" name="email" type="email" placeholder="example@gmail.com" required v-model="email" />
             <label htmlFor="password">
               Password
             </label>
-            <input class="password-field" name="password" type="password" required />
+            <input class="password-field" name="password" type="password" required v-model="password" />
           </form>
         </div>
       </section>
-        <button class="button">Create Account</button>
+      <button class="button" @click="account = !account">Create Account</button>
     </div>
   </div>
 </template>
@@ -54,12 +53,15 @@
   export default {
     name: 'LoginForm',
     data: () => ({
-      account: true
+      account: true,
+      email: '',
+      password: ''
+      
     }),
     props: {
     },
     methods: {
-      // onClick
+      
     }
   }
 </script>

@@ -59,7 +59,7 @@
   color: white;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   font-weight: bold;
-  font-size: 3.5em;
+  font-size: 3em;
 }
 
 

@@ -9,7 +9,7 @@
       Password
       </label>
       <input class="password-field" name="password" type="password" required />
-      <button class="button">Add Course</button>
+      <button class="button" @click="navigateToDash">Add Student</button>
     </form>
   </div>
 </template>
@@ -18,6 +18,11 @@
   export default {
     name: 'CreateStudent',
     props: {
+    },
+    methods: {
+      navigateToDash() {
+        this.$router.push({path: `/homepage` })
+      }
     }
   }
 </script>

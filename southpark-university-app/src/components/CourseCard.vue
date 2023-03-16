@@ -1,6 +1,6 @@
 <template>
   <div className="course-card">
-    <h1>Course Name:</h1>
+    <h1>Course:</h1>
   </div>
 </template>
 
@@ -12,4 +12,10 @@
   }
 </script>
 
-<style></style>
+<style>
+.course-card {
+  color: white;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-weight: bold;
+}
+</style>
