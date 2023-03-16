@@ -1,5 +1,7 @@
 <template>
-  <div></div>
+  <div className="course-card">
+    <h1>Course Name:</h1>
+  </div>
 </template>
 
 <script>

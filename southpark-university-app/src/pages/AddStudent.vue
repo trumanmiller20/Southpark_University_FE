@@ -1,11 +1,17 @@
 <template>
-  <div></div>
+  <div>
+    <CreateStudent />
+  </div>
 </template>
 
 <script>
+import CreateStudent from '../components/CreateStudent'
   export default {
     name: 'AddStudent',
     props: {
+    },
+    components: {
+      CreateStudent
     }
   }
 </script>
