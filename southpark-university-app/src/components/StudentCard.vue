@@ -1,8 +1,8 @@
 <template>
   <div class="student-card">
-    <h1>Name:</h1>
-    <h1>Email:</h1>
-    <h2>GPA:</h2>
+    <h3>Name</h3>
+    <h3>Email</h3>
+    <h4>GPA</h4>
   </div>
 </template>
 
@@ -16,8 +16,16 @@
 
 <style>
 .student-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   color: white;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   font-weight: bold;
+  background-color: rgb(46, 204, 133);
+  border-radius: 10px;
+  width: 150px;
+  height: 100%;
 }
 </style>

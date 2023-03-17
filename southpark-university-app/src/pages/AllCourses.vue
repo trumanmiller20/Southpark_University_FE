@@ -16,4 +16,10 @@ import CourseCard from '../components/CourseCard'
   }
 </script>
 
-<style></style>
+<style>
+.allcourses {
+  display: flex;
+  flex-wrap: row wrap;
+  margin: 25px;
+}
+</style>
