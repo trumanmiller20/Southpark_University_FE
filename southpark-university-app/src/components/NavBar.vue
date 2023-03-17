@@ -7,18 +7,30 @@
       <router-link to="homepage">Dashboard</router-link>
       <router-link to="allstudents">Students</router-link>
       <router-link to="allcourses">Courses</router-link>
-      <router-link to="/">Logout</router-link>
+      <router-link v-if="loggedIn" @click="$emit('logout')">Logout</router-link>
     </div>
   </nav>
 </template>
 
 <script>
-  export default {
-    name: 'NavBar',
-    props: {
+export default {
+  name: 'NavBar',
+  props: {
+    loggedIn: {
+      type: Boolean,
+      default: false
+    }
+  },
+  methods: {
+    handleLogout() {
+      // Emit an event to update the loggedIn status to false
+      this.$emit('logout')
     }
   }
+}
 </script>
+
+
 
 <style>
 nav {

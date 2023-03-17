@@ -1,6 +1,6 @@
 import Axios from 'axios'
 
-export const BASE_URL = 'http://localhost:8080'
+export const BASE_URL = 'http://localhost:3001'
 
 const User = Axios.create({ baseURL: BASE_URL })
 
@@ -16,3 +16,4 @@ User.interceptors.request.use(
 )
 
 export default User
+

@@ -1,13 +1,13 @@
 <template>
-  <div class="account" v-if="account">
-    <div class="login">
+  <div class="account">
+    <div v-if="account">
       <section class="image-container">
         <img class="signimg" alt="Image" src="https://upload.wikimedia.org/wikipedia/commons/c/c6/Sign-check-icon.png" />
       </section>
       <h1>Sign in to your account</h1>
       <section class="form">
         <div class="form-fields">
-          <form @submit="handleSignIn(), navigateToDash()">
+          <form @submit.prevent="handleSignIn">
             <label htmlFor="email">
               Email
             </label>
@@ -16,24 +16,22 @@
               Password
             </label>
             <input class="password-field" name="password" type="password" required v-model="password" />
-            <button class="button" >Sign In</button>
+            <button class="button" type="submit">Sign In</button>
           </form>
         </div>
       </section>
       <h2>Don't have an account?</h2>
-      <button class="button" @click="navigateToDash, account = !account">Create Account</button>
+      <button class="button" @click="showAccountForm">Create Account</button>
     </div>
-  </div>
 
-  <div class="account" v-else>
-    <div class="register">
+    <div v-else>
       <section class="image-container">
         <img class="signimg" alt="Image" src="https://upload.wikimedia.org/wikipedia/commons/c/c6/Sign-check-icon.png" />
       </section>
       <h1>Register for account</h1>
       <section class="form">
         <div class="form-fields">
-          <form @submit="handleRegister">
+          <form @submit.prevent="handleRegister">
             <label htmlFor="email">
               Email
             </label>
@@ -42,45 +40,53 @@
               Password
             </label>
             <input class="password-field" name="password" type="password" required v-model="password" />
+            <button class="button" type="submit">Create Account</button>
           </form>
         </div>
       </section>
-      <button class="button" @click="account = !account">Create Account</button>
+      <h2>Already have an account?</h2>
+      <button class="button" @click="showLoginForm">Sign In</button>
     </div>
   </div>
 </template>
 
 <script>
-import SignInUser from '../services/Auth'
-import RegisterUser from '../services/Auth'
+import { SignInUser, RegisterUser } from '../services/Auth'
 
-  export default {
-    name: 'LoginForm',
-    data: () => ({
-      account: true,
+
+export default {
+  name: 'LoginForm',
+  data: () => ({
+    account: true,
+    email: '',
+    password: '',
+    body: {
       email: '',
-      password: '',
-      body: {
-        email: '',
-        password: '' 
-      }
-      
-    }),
-    props: {
-    },
-    methods: {
-      async handleSignIn() {
-      await SignInUser(this.body)
-      },
-      async handleRegister() {
-        await RegisterUser(this.body)
-        },
-      navigateToDash() {
-        this.$router.push({path: `/homepage` })
-      }
-      }
+      password: '' 
     }
+  }),
+  methods: {
+    async handleSignIn() {
+  await SignInUser({ email: this.email, password: this.password })
+  this.$emit('userLoggedIn', true) // emit the `userLoggedIn` event with a `true` payload
+  console.log('user logged in')
+  this.$router.push('/homepage')
+    },
+    async handleRegister() {
+      await RegisterUser({ email: this.email, password: this.password })
+      this.$router.push('/login')
+    },
+    showLoginForm() {
+      this.account = true
+    },
+    showAccountForm() {
+      this.account = false
+    }
+  }
+}
 </script>
+
+
 
 <style>
 .account {
@@ -90,6 +96,7 @@ import RegisterUser from '../services/Auth'
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center; 
 }
 
 .signimg {
@@ -112,7 +119,8 @@ import RegisterUser from '../services/Auth'
 form {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  margin: 0 auto; 
+  align-items: center; 
 }
 
 input {
@@ -129,6 +137,13 @@ label {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   color: white;
   font-weight: bold;
+  text-align: center; /* Center the label text */
+}
+
+.form-fields {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px; /* Remove these two lines */
 }
 
 .button {
@@ -142,6 +157,7 @@ label {
   height: 35px;
   margin-top: 15px;
 }
+
 
 /* #27AE60 */
 
