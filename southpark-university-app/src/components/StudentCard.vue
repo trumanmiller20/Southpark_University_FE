@@ -10,7 +10,10 @@
   export default {
     name: 'StudentCard',
     props: {
-      students: []
+      students: {
+        type: Array,
+        required: true
+      }
     }
   }
 </script>
