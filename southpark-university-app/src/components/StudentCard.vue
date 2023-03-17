@@ -1,8 +1,7 @@
 <template>
   <div v-for="student in students" :key="student.id" class="student-card">
     <h3>{{ student.name }}</h3>
-    <h3>{{ student.email }}</h3>
-    <h4></h4>
+    <h5>{{ student.email }}</h5>
   </div>
 </template>
 
@@ -29,7 +28,11 @@
   font-weight: bold;
   background-color: rgb(46, 204, 133);
   border-radius: 10px;
-  width: 150px;
-  height: 100%;
+  border-style: outset;
+  border-color: #27AE60;
+  width: 180px;
+  height: 175px;
+  margin: 20px;
+  overflow: auto;
 }
 </style>
