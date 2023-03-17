@@ -65,16 +65,20 @@ export default {
       password: '' 
     }
   }),
+  props: {
+    user: {
+      type: Boolean
+    }
+  },
   methods: {
     async handleSignIn() {
   await SignInUser({ email: this.email, password: this.password })
-  this.$emit('userLoggedIn', true)
   console.log('user logged in')
   this.$router.push('/homepage')
     },
     async handleRegister() {
       await RegisterUser({ email: this.email, password: this.password })
-      this.$router.push('/login')
+      this.$router.push('/')
     },
     showLoginForm() {
       this.account = true
