@@ -41,9 +41,10 @@
         this.deleteStudent(studentId)
       },
       onSubmit(studentId) {
-        this.editStudent(studentId, this.newName, this.newEmail)
-        this.newName = ''
-        this.newEmail = ''
+  this.editStudent(studentId, this.newName, this.newEmail)
+  this.students.find(student => student.id === studentId).name = this.newName
+  this.newName = ''
+  this.newEmail = ''
       }
     }
   }
@@ -62,8 +63,8 @@
   border-radius: 10px;
   border-style: outset;
   border-color: #27AE60;
-  width: 300px;
-  height: 280px;
+  width: 400px;
+  height: 400px;
   margin: 20px;
   padding: 20px;
   overflow: auto;
