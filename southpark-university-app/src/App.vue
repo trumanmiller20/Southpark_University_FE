@@ -1,9 +1,7 @@
 <template>
   <div id="app">
-    <header>
-      <NavBar />
-    </header>
-    <router-view></router-view>
+    <NavBar :loggedIn="loggedIn" @logout="handleLogout" />
+    <router-view @userLoggedIn="updateLoggedInStatus" />
   </div>
 </template>
 
@@ -14,9 +12,26 @@ export default {
   name: 'App',
   components: {
     NavBar
+  },
+  data() {
+    return {
+      loggedIn: false
+    }
+  },
+  methods: {
+    updateLoggedInStatus(status) {
+      this.loggedIn = status
+      console.log('Logged in status updated:', status)
+    },
+    handleLogout() {
+      this.loggedIn = false
+      this.$router.push('/login')
+    }
   }
 }
 </script>
+
+
 
 <style>
 html body{
