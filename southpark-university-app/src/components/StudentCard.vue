@@ -1,8 +1,8 @@
 <template>
-  <div class="student-card">
-    <h3>Name</h3>
-    <h3>Email</h3>
-    <h4>GPA</h4>
+  <div v-for="student in students" :key="student.id" class="student-card">
+    <h3>{{ student.name }}</h3>
+    <h3>{{ student.email }}</h3>
+    <h4></h4>
   </div>
 </template>
 
@@ -10,6 +10,7 @@
   export default {
     name: 'StudentCard',
     props: {
+      students: []
     }
   }
 </script>
