@@ -7,7 +7,7 @@
       <h1>Sign in to your account</h1>
       <section class="form">
         <div class="form-fields">
-          <form>
+          <form @submit="handleSignIn(), navigateToDash()">
             <label htmlFor="email">
               Email
             </label>
@@ -16,11 +16,12 @@
               Password
             </label>
             <input class="password-field" name="password" type="password" required v-model="password" />
+            <button class="button" >Sign In</button>
           </form>
         </div>
       </section>
       <h2>Don't have an account?</h2>
-      <button class="button" @click="account = !account">Create Account</button>
+      <button class="button" @click="navigateToDash, account = !account">Create Account</button>
     </div>
   </div>
 
@@ -32,7 +33,7 @@
       <h1>Register for account</h1>
       <section class="form">
         <div class="form-fields">
-          <form>
+          <form @submit="handleRegister">
             <label htmlFor="email">
               Email
             </label>
@@ -50,20 +51,35 @@
 </template>
 
 <script>
+import SignInUser from '../services/Auth'
+import RegisterUser from '../services/Auth'
+
   export default {
     name: 'LoginForm',
     data: () => ({
       account: true,
       email: '',
-      password: ''
+      password: '',
+      body: {
+        email: '',
+        password: '' 
+      }
       
     }),
     props: {
     },
     methods: {
-      
+      async handleSignIn() {
+      await SignInUser(this.body)
+      },
+      async handleRegister() {
+        await RegisterUser(this.body)
+        },
+      navigateToDash() {
+        this.$router.push({path: `/homepage` })
+      }
+      }
     }
-  }
 </script>
 
 <style>
