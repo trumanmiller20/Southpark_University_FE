@@ -1,13 +1,18 @@
 <template>
-  <div className="course-card">
-    <h3>Course:</h3>
+  <div v-for="course in courses" :key="course.id" class="course-card">
+    <h3>{{ course.name }}</h3>
+    
+    <h4></h4>
   </div>
 </template>
-
 <script>
   export default {
     name: 'CourseCard',
     props: {
+      courses: {
+        type: Array,
+        required: true
+      }
     }
   }
 </script>

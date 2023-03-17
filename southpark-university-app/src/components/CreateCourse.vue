@@ -2,25 +2,36 @@
   <div class="form-fields">
     <form>
       <label>
-      Course Name
+        Course Name
       </label>
-      <input class="course-name" name="course-name" placeholder="i.e. Accounting II" required />
-      <button class="button" @click="navigateToDash">Add Course</button>
+      <input class="course-name" v-model="name" name="course-name" placeholder="i.e. Accounting II" required />
+      <button class="button" @click.prevent="createCourse">Add Course</button>
     </form>
   </div>
 </template>
 
 <script>
-  export default {
-    name: 'CreateCourse',
-    props: {
-    },
-    methods: {
-      navigateToDash() {
-        this.$router.push({path: `/homepage` })
+import User from '../services/api'
+export default {
+  name: 'CreateCourse',
+  data() {
+    return {
+      name: ''
+    }
+  },
+  methods: {
+    async createCourse() {
+      try {
+        const response = await User.post('/course/create/', { name: this.name })
+        console.log(response.data)
+        this.$router.push({ path: '/homepage' })
+      } catch (error) {
+        console.error(error)
       }
     }
   }
+}
 </script>
+
 
 <style></style>
