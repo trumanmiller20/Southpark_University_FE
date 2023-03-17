@@ -68,7 +68,7 @@ export default {
   methods: {
     async handleSignIn() {
   await SignInUser({ email: this.email, password: this.password })
-  this.$emit('userLoggedIn', true) // emit the `userLoggedIn` event with a `true` payload
+  this.$emit('userLoggedIn', true)
   console.log('user logged in')
   this.$router.push('/homepage')
     },
