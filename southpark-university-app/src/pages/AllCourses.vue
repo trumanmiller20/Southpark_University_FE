@@ -1,8 +1,7 @@
 <template>
+  <h1>Courses</h1>
   <div class="allcourses">
-    <div>
-      <CourseCard :courses="courses"/>
-    </div>
+    <CourseCard :courses="courses"/>
   </div>
 </template>
 
@@ -38,8 +37,8 @@ import CourseCard from '../components/CourseCard'
 <style>
 .allcourses {
   display: flex;
-  flex-wrap: row wrap;
-  margin: 25px;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 </style>
 

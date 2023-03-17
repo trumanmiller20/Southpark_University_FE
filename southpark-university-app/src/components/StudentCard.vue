@@ -62,7 +62,11 @@
   font-weight: bold;
   background-color: rgb(46, 204, 133);
   border-radius: 10px;
-  width: 150px;
-  height: 100%;
+  border-style: outset;
+  border-color: #27AE60;
+  width: 180px;
+  height: 175px;
+  margin: 20px;
+  overflow: auto;
 }
 </style>

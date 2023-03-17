@@ -1,4 +1,5 @@
 <template>
+  <h1>Students</h1>
   <div class="allstudents">
     <div>
       <StudentCard
@@ -46,9 +47,15 @@ export default {
 
 
 <style>
+h1 {
+  text-align: center;
+  color: white;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-weight: bold;
+}
 .allstudents {
   display: flex;
-  flex-wrap: row wrap;
-  margin: 25px;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 </style>
