@@ -14,4 +14,10 @@
   }
 </script>
 
-<style></style>
+<style>
+.student-card {
+  color: white;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-weight: bold;
+}
+</style>
