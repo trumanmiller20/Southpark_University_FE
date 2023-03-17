@@ -1,7 +1,15 @@
 <template>
   <div v-for="student in students" :key="student.id" class="student-card">
     <h3>{{ student.name }}</h3>
-    <h5>{{ student.email }}</h5>
+    <h3>{{ student.email }}</h3>
+    <form @submit.prevent="onSubmit(student.id)">
+      <label for="name">Name:</label>
+      <input type="text" id="name" v-model="newName">
+      <label for="email">Email:</label>
+      <input type="text" id="email" v-model="newEmail">
+      <button type="submit">Save</button>
+    </form>
+    <button @click="deleteOneStudent(student.id)">Delete</button>
   </div>
 </template>
 
@@ -12,10 +20,36 @@
       students: {
         type: Array,
         required: true
+      },
+      deleteStudent: {
+        type: Function,
+        required: true
+      },
+      editStudent: {
+        type: Function,
+        required: true
+      }
+    },
+    data() {
+      return {
+        newName: '',
+        newEmail: ''
+      }
+    },
+    methods: {
+      deleteOneStudent(studentId) {
+        this.deleteStudent(studentId)
+      },
+      onSubmit(studentId) {
+        this.editStudent(studentId, this.newName, this.newEmail)
+        this.newName = ''
+        this.newEmail = ''
       }
     }
   }
 </script>
+
+
 
 <style>
 .student-card {
